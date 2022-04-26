@@ -8,5 +8,17 @@
     "cypress-open": "cypress open"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinaCv/cypress_typescript_example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DinaCv/cypress_typescript_example/issues"
+  },
+  "homepage": "https://github.com/DinaCv/cypress_typescript_example#readme",
+  "dependencies": {
+    "cypress": "9.6.0",
+    "typescript": "4.6.3"
+  }
 }
