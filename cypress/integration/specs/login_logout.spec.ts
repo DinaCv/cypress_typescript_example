@@ -2,9 +2,8 @@ describe('Login/logout test', () => {
 
     it('Successful login test', () => {
         cy.visit(Cypress.env('baseUrl'));
-        cy.get('#username').type(Cypress.env('usar'));
-        cy.get('#password').type(Cypress.env('pazz'), {log: false});
-        cy.contains('Login').click();
+        cy.login(Cypress.env('usar'), Cypress.env('pazz'));
+
         cy.get('#profile > .avatar-block').click();
         const userName = Cypress.env('usar').replace('.', "-");
         cy.get('.user-nicename').contains(userName);
@@ -38,9 +37,7 @@ describe('Login/logout test', () => {
     });
 
     it('Failed login test', () => {
-        cy.get('#username').type('username');
-        cy.get('#password').type('password');
-        cy.contains('Login').click();
+        cy.login('username', 'password');
 
         // assert login form exists and assert error message
         cy.get('#login').should('exist');
