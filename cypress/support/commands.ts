@@ -4,7 +4,7 @@ declare namespace Cypress {
 
         assertElementsCountForItem(itemTitle: string): Chainable<any>;
 
-        loadBillboard(): Chainable<any>;
+        loadBillboardWithCategories(): Chainable<any>;
 
         getElementsLengthOnPage(): Chainable<any>;
     }
@@ -55,7 +55,7 @@ Cypress.Commands.add('getElementsLengthOnPage', () => {
 });
 
 Cypress.Commands.add('assertElementsCountForItem', (itemTitle) => {
-    cy.get(`li:contains("${itemTitle}")`).as('group');
+    cy.get(`.product-category:contains("${itemTitle}")`).as('group');
 
     cy.get('@group')
         .find('.count').then(($el) => {
@@ -71,7 +71,7 @@ Cypress.Commands.add('assertElementsCountForItem', (itemTitle) => {
     });
 });
 
-Cypress.Commands.add('loadBillboard', () => {
+Cypress.Commands.add('loadBillboardWithCategories', () => {
     cy.get('[title="Billboard"]').click();
-    cy.get('.products').should('exist');
+    cy.get('.product-category').should('exist');
 });

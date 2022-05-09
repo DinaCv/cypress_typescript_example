@@ -4,10 +4,10 @@ describe('billboard test', () => {
         cy.visit(Cypress.env('baseUrl'));
         cy.login(Cypress.env('usar'), Cypress.env('pazz'));
 
-        cy.loadBillboard();
+        cy.loadBillboardWithCategories();
         cy.assertElementsCountForItem('Electronics');
 
-        cy.loadBillboard();
+        cy.loadBillboardWithCategories();
         cy.assertElementsCountForItem('Food');
     });
 });

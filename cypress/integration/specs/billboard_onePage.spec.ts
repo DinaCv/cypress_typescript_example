@@ -4,12 +4,12 @@ describe('billboard_onePage test', () => {
         cy.visit(Cypress.env('baseUrl'));
         cy.login(Cypress.env('usar'), Cypress.env('pazz'));
 
-        // click on Billboard and wait for its load
+        // click on Billboard and wait for categories load
         cy.get('[title="Billboard"]').click();
-        cy.get('.products').should('exist');
+        cy.get('.product-category').should('exist');
 
         // get "Food" item's text and extract digit from it
-        cy.get('li:contains("Food")').as('group');
+        cy.get('.product-category:contains("Food")').as('group');
         cy.get('@group')
             .find('.count').then(($el) => {
             cy.wrap($el.text().replace(' Products', ''));
