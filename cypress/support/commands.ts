@@ -7,6 +7,8 @@ declare namespace Cypress {
         loadBillboardWithCategories(): Chainable<any>;
 
         getElementsLengthOnPage(): Chainable<any>;
+
+        searchAndNavigateToPost(searchText: string, postTitle: string): Chainable<any>;
     }
 }
 
@@ -74,4 +76,9 @@ Cypress.Commands.add('assertElementsCountForItem', (itemTitle) => {
 Cypress.Commands.add('loadBillboardWithCategories', () => {
     cy.get('[title="Billboard"]').click();
     cy.get('.product-category').should('exist');
+});
+
+Cypress.Commands.add('searchAndNavigateToPost', (searchText, postTitle) => {
+    cy.get('[placeholder="Start typing to search..."]').type(searchText);
+    cy.get('.search_title').contains(postTitle).click();
 });
